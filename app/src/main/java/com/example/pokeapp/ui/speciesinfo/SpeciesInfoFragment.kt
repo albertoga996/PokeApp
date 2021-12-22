@@ -9,6 +9,7 @@ import com.example.pokeapp.R
 import com.example.pokeapp.databinding.FragmentSpeciesInfoBinding
 import com.example.pokeapp.utils.navigateTo
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
 @AndroidEntryPoint
 class SpeciesInfoFragment : Fragment(R.layout.fragment_species_info) {
@@ -28,10 +29,15 @@ class SpeciesInfoFragment : Fragment(R.layout.fragment_species_info) {
 
         initialize()
         initObserves()
+        Timber.i("deepLink ${args.poke}")
     }
 
     private fun initialize() {
-        speciesInformationViewModel.getPokemonInf(args.pokemonId)
+        args.poke?.let {
+            speciesInformationViewModel.getPokemonInf(it)
+        }?: run {
+            speciesInformationViewModel.getPokemonInf(args.pokemonId)
+        }
 
         binding.btnConsultaHabilidades.setOnClickListener {
             navigateTo(
@@ -52,8 +58,12 @@ class SpeciesInfoFragment : Fragment(R.layout.fragment_species_info) {
     }
 
     private fun initObserves() {
-        speciesInformationViewModel.pokemonSpecs.observe(viewLifecycleOwner, {
-            binding.title.text = args.pokemonId
+        speciesInformationViewModel.pokemonSpecs.observe(viewLifecycleOwner, { it ->
+            args.poke?.let { value ->
+                binding.title.text = value
+            }?: run {
+                binding.title.text = args.pokemonId
+            }
             binding.felicidadBase.text = getString(R.string.felididad_base, it.baseHappiness)
             binding.ratioCaptura.text = getString(R.string.ratio_captura, it.captureRate)
             binding.gruposDeHuevo.text = getString(

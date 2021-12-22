@@ -66,6 +66,15 @@
                 android:defaultValue="false"
                 app:argType="string" />
         </action>
+        <argument
+            android:name="poke"
+            app:nullable="true"
+            android:defaultValue="@null"
+            app:argType="string" />
+        <!-- <deepLink
+            app:uri="pokeprueba://showSpecie?name={poke}" /-->
+        <deepLink
+            app:uri="www.showSpecie.com/name={poke}" />
     </fragment>
 
     <fragment
