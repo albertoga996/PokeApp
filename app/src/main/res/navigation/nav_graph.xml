@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/dashboardFragment">
+
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.example.pokeapp.ui.dashboard.DashboardFragment"
+        android:label="DashboardFragment"
+        tools:layout="@layout/fragment_dashboard">
+        <argument
+            android:name="favoritePokemon"
+            android:defaultValue="@null"
+            app:nullable="true"
+            app:argType="string" />
+        <argument
+            android:name="favorite"
+            android:defaultValue="false"
+            app:argType="boolean" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_speciesInfoFragment"
+            app:destination="@id/speciesInfoFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim">
+            <argument
+                android:name="pokemonId"
+                android:defaultValue="false"
+                app:argType="string" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/speciesInfoFragment"
+        android:name="com.example.pokeapp.ui.speciesinfo.SpeciesInfoFragment"
+        android:label="SpeciesInfoFragment"
+        tools:layout="@layout/fragment_species_info">
+        <argument
+            android:name="pokemonId"
+            android:defaultValue="false"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_speciesInfoFragment_to_skillScreenFragment"
+            app:destination="@id/skillScreenFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim">
+            <argument
+                android:name="pokemonId"
+                android:defaultValue="false"
+                app:argType="string" />
+        </action>
+        <action
+            android:id="@+id/action_speciesInfoFragment_to_evolutionaryLineFragment"
+            app:destination="@id/evolutionaryLineFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim">
+            <argument
+                android:name="evolutionUrl"
+                android:defaultValue="false"
+                app:argType="string" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/evolutionaryLineFragment"
+        android:name="com.example.pokeapp.ui.evolutionaryline.EvolutionaryLineFragment"
+        android:label="EvolutionaryLineFragment"
+        tools:layout="@layout/fragment_evolutionary_line">
+        <argument
+            android:name="evolutionUrl"
+            android:defaultValue="false"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_evolutionaryLineFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim">
+            <argument
+                android:name="favoritePokemon"
+                android:defaultValue="@null"
+                app:nullable="true"
+                app:argType="string" />
+            <argument
+                android:name="favorite"
+                android:defaultValue="false"
+                app:argType="boolean" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/skillScreenFragment"
+        android:name="com.example.pokeapp.ui.skillscreen.SkillScreenFragment"
+        android:label="SkillScreenFragment"
+        tools:layout="@layout/fragment_skills_screen">
+        <argument
+            android:name="pokemonId"
+            android:defaultValue="false"
+            app:argType="string" />
+    </fragment>
+</navigation>

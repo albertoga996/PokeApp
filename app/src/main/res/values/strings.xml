@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">PokeApp</string>
+    <string name="ppal_url">https://pokeapi.co/api/v2/</string>
+    
+    <string name="felididad_base">Felicidad base: %d</string>
+    <string name="ratio_captura">Ratio captura: %d</string>
+    <string name="grupos_de_huevo">Grupos de huevo: %s</string>
+    <string name="btn_linea_evolutiva">Línea evolutiva</string>
+    <string name="btn_consulta_habilidades">Consulta de habilidades</string>
+</resources>
